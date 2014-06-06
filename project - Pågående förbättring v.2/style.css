@@ -1,0 +1,145 @@
+body {
+	background-image: url(images/greyzz.png);
+	font-size: 10px;
+	margin: 0;
+	text-align: left;
+	color: #fff;
+}
+
+input {
+	font-size: 0.7em;
+}
+
+.inputText {
+	width: 12.7em;
+}
+
+textarea {
+	width: 13.8em;
+	height: 10em;
+	resize:none;		
+}
+
+h2 {
+	border-bottom: 2px solid white;
+}
+
+h4 {
+	margin: 0;
+}
+
+.header {
+	background: #256fb5;
+	width: 100%;
+	height: 3em;
+}
+
+#jim {
+	width: 8em;
+	margin-top: -1.35em;
+	margin-left: -2em;
+}
+
+#createSummary {
+	width: 12em;
+	height: 2.9em;
+	float: right;
+	text-decoration: none;
+	color: fff;
+}
+
+#createSummary:hover {
+	color: 000;
+}
+
+nav {
+	position: absolute;
+	top: 6em;
+	right: auto;
+	width: 12em;
+	background: #256fb5;
+}
+
+nav > ul {
+	padding-left: 1.5em;
+}
+
+nav > ul > a > li {
+	font-size: 1.3em;
+	list-style: none;
+	margin: 0;
+	width: 100%;
+	padding-top: 0.2em;
+	-webkit-transition: -webkit-transform 0.15s ease;
+    -moz-transition: -moz-transform 0.15s ease;
+    -o-transition: -o-transform 0.15s ease;
+    transition: transform 0.15s ease;
+}
+
+nav > ul > a {
+	text-decoration: none;
+	color: #fff;
+}
+
+nav > ul > a > li:hover {
+	background: #256fb5;
+	-moz-transform: translateX(1em);
+	-webkit-transform: translateX(1em);
+	-o-transform: translateX(1em);
+	-ms-transform: translateX(1em);
+	transform: translateX(1em);
+}
+
+.container {
+	position: relative;
+	left: 20em;
+	top: 3em;
+	width: 30em;
+	padding: 1.5em;
+	background: #256fb5;
+	padding-top: 0.5em;
+}
+
+.container li {
+	list-style: none;
+	background: #256fb5;
+	margin-bottom: 0.2em;
+}
+
+.container a {
+	text-decoration: none;
+	color: #fff;	
+}
+
+.container a:hover {
+	color: #000;
+}
+
+.form {
+	float: right;
+}
+
+form {
+	display: inline-block;
+}
+
+#explanationLabel * {
+	vertical-align: top;
+}
+
+input {
+	margin-left: 1.3em;
+}
+
+#preview {
+	position: relative;
+	left: 17.7em;
+	top: 2.5em;
+	margin-top: -2.8em;
+	padding-bottom: -5em;
+}
+
+.button4 {
+	position: relative;
+	top: 5.5em;
+}
