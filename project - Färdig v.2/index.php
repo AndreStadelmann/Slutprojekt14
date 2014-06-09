@@ -5,7 +5,10 @@
 	$subjectsArray = array();
 	$liHrefID = array();
 	$liValue = array();
-	$ul2;
+	$ul2 = array();
+	$subUl = '';
+	$explanation = "";
+	$link = "id='linkTrue'";
 	if ($pdo) {
 		foreach ($pdo->query("SELECT * FROM subject GROUP BY name ORDER BY name") as $holder) 
 		{
@@ -41,12 +44,16 @@
 									$statment2->bindParam(1, $class);
 
 									if ($statment2->execute()) {
-										echo "<ul id=selectedClass>";
 										while ($row2 = $statment2->fetch()) {
-											echo "<a href=\"?part={$row2['ID']}\"><li> <h4> {$row2['name']} </h4> </li></a> ";
+											//echo ;
+											$subUl .= "<a href=\"?part={$row2['ID']}\"><li> <h4> {$row2['name']} </h4> </li></a>";
 										}
-										echo "</ul>";
+										array_push($ul2, $subUl);
 									}
+									
+								}
+								else {
+									array_push($ul2, "");
 								}
 							}
 						}
@@ -66,11 +73,11 @@
 						$statement->bindParam(1, $part);
 
 						if ($statement->execute()) {
-							echo "<ul>";
 							while ($row = $statement->fetch()) {
-								echo "<li><a href=\"?summary={$row['ID']}\"> <h4> {$row['name']} </h4> </a></li> ";
+								//echo "<li><a href=\> <h4> {$row['name']} </h4> </a></li> ";
+								array_push($liHrefID, "?summary={$row['ID']}");
+								array_push($liValue, $row['name']);
 							}
-							echo "</ul>";
 						}
 					}
 
@@ -81,23 +88,23 @@
 
 						if ($statement->execute()) {
 							$summaryName = $statement->fetch();
-							echo "<h2>{$summaryName['name']}</h2>";
+							$rubrik = $summaryName['name'];
 						}
-
+						else {
+							$rubrik = "ERROR 404";
+						}
 
 						$statement = $pdo->prepare("SELECT * FROM concepts WHERE summary_ID=? ORDER BY concept");
 						$statement->bindParam(1, $summary);
 
-
-
 						if ($statement->execute()) {
-							echo "<ul>";
 							while ($row = $statement->fetch()) {
-								echo "<p> <li> <h4> {$row['concept']}: </h4> </li> ";
-								echo "<li> {$row['explanation']} </li> </p>";
+								//echo "<p> <li> <h4> {$row['concept']}: </h4> </li> ";
+								array_push($liValue, $row['concept']);
+								$explanation = "<li> {$row['explanation']} </li> </p>";
 							}
-							echo "</ul>";
 						}
+						$link = "id=linkFalse";
 					}
 					
 
@@ -166,8 +173,10 @@
 					while (count($liValue) > 0) {
 						$holder = array_shift($liHrefID);
 						$holder1 = array_shift($liValue);
-						echo "<li><a href='{$holder}'><h4>$holder1</h4></a></li>";
-						echo "<ul></ul>";
+						$holder2 = array_shift($ul2);
+						echo "<li><a {$link} href='{$holder}'><h4>$holder1</h4></a></li>";
+						echo "<ul id='selectedClass'>{$holder2}</ul>";
+						echo $explanation;
 					}
 				?>
 			</ul>
